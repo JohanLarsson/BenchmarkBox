@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AllocationBenchmarks.cs" />
+    <Compile Include="ISetter.cs" />
+    <Compile Include="MemberDelegates.cs" />
     <Compile Include="RaisePropertyChangedBenchmarks.cs" />
     <Compile Include="SetPropertyBenchmarks.cs" />
     <Compile Include="Program.cs" />

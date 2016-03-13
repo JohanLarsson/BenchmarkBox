@@ -1,3 +1,5 @@
+using System.Linq.Expressions;
+
 namespace BenchmarkBox
 {
     using System;
@@ -6,8 +8,9 @@ namespace BenchmarkBox
 
     public class SetPropertyBenchmarks
     {
-        private static readonly PropertyInfo cachedPropertyInfo = typeof(SetPropertyBenchmarks).GetProperty(nameof(Value));
-        private static readonly Action<object, object> setAction = CreateSetDelegate(cachedPropertyInfo);
+        private static readonly PropertyInfo ValuePropertyInfo = typeof(SetPropertyBenchmarks).GetProperty(nameof(Value));
+        private static readonly ISetter Setter = ValuePropertyInfo.CreateSetter();
+        private static readonly Action<SetPropertyBenchmarks, string> SetterDelegate = ValuePropertyInfo.CreateSetterDelegate<SetPropertyBenchmarks, string>();
 
         public string Value { get; set; }
 
@@ -17,67 +20,64 @@ namespace BenchmarkBox
             Value = "";
         }
 
-        //[Benchmark]
-        //public void PropertyInfo()
-        //{
-        //    var propertyInfo = this.GetType().GetProperty(nameof(Value));
-        //    propertyInfo.SetValue(this, "");
-        //}
-
-        //[Benchmark]
-        //public void CachedPropertyInfo()
-        //{
-        //    cachedPropertyInfo.SetValue(this, "");
-        //}
-
-        //[Benchmark]
-        //public void Dynamic()
-        //{
-        //    var self = (dynamic)this;
-        //    self.Value = "";
-        //}
-
-        //[Benchmark]
-        //public void Action()
-        //{
-        //    Action<string> action = x => this.Value = x;
-        //    action("");
-        //}
-
-        //[Benchmark]
-        //public void HomegrownDelegate()
-        //{
-        //    var action = CreateSetDelegate(cachedPropertyInfo);
-        //    action.DynamicInvoke(this, "");
-        //}
+        [Benchmark]
+        public void PropertyInfo()
+        {
+            var propertyInfo = this.GetType().GetProperty(nameof(Value));
+            propertyInfo.SetValue(this, "");
+        }
 
         [Benchmark]
-        public void CachedHomegrownDelegate()
+        public void CachedPropertyInfo()
         {
-            setAction(this, "");
+            ValuePropertyInfo.SetValue(this, "");
         }
 
-        //[Benchmark]
-        //public void HomegrownExpressionAction()
-        //{
-        //    var propertyInfo = GetType().GetProperty(nameof(Value));
-        //    var parameter = Expression.Parameter(typeof(string), "x");
-        //    var memberExpression = Expression.MakeMemberAccess(Expression.Constant(this), propertyInfo);
-        //    var action = Expression.Lambda<Action<string>>(
-        //        Expression.Assign(memberExpression, parameter),
-        //        parameter).Compile();
-        //    action("");
-        //}
-
-        private static Action<SetPropertyBenchmarks, string> CreateSetAction(PropertyInfo propertyInfo)
+        [Benchmark]
+        public void Dynamic()
         {
-            return (Action<SetPropertyBenchmarks, string>)Delegate.CreateDelegate(typeof(Action<SetPropertyBenchmarks, string>), propertyInfo.SetMethod);
+            var self = (dynamic)this;
+            self.Value = "";
         }
 
-        private static Action<object, object> CreateSetDelegate(PropertyInfo propertyInfo)
+        [Benchmark]
+        public void Action()
         {
-            var type = typeof(Action<,>).MakeGenericType(propertyInfo.DeclaringType, propertyInfo.PropertyType);
-            return (Action<object, object>)Delegate.CreateDelegate(type, propertyInfo.SetMethod);
+            Action<string> action = x => this.Value = x;
+            action("");
+        }
+
+        [Benchmark]
+        public void DynamicInvoke()
+        {
+            var action = Delegate.CreateDelegate(typeof(Action<SetPropertyBenchmarks, string>), ValuePropertyInfo.SetMethod);
+            action.DynamicInvoke(this, "hej");
+        }
+
+        [Benchmark]
+        public void CachedDelegate()
+        {
+            SetterDelegate.Invoke(this, "");
+        }
+
+        [Benchmark]
+        public void CreateAndInvokeDelegate()
+        {
+            var setterDelegate = ValuePropertyInfo.CreateSetterDelegate<SetPropertyBenchmarks, string>();
+            setterDelegate.Invoke(this, "");
+        }
+
+        [Benchmark]
+        public void CachedSetter()
+        {
+            Setter.SetValue(this, "");
+        }
+
+        [Benchmark]
+        public void CreateAndInvokeSetter()
+        {
+            var setter = ValuePropertyInfo.CreateSetter();
+            setter.SetValue(this, "");
         }
     }
 }
