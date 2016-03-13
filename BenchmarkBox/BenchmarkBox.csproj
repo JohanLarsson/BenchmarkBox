@@ -41,7 +41,9 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Benchmarks.cs" />
+    <Compile Include="AllocationBenchmarks.cs" />
+    <Compile Include="RaisePropertyChangedBenchmarks.cs" />
+    <Compile Include="SetPropertyBenchmarks.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
