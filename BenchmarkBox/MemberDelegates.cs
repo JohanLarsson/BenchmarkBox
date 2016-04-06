@@ -3,6 +3,8 @@ using System.Reflection;
 
 namespace BenchmarkBox
 {
+    using System.Reflection.Emit;
+
     internal static class MemberDelegates
     {
         internal static ISetter CreateSetter(this PropertyInfo propertyInfo)
@@ -14,8 +16,21 @@ namespace BenchmarkBox
 
         internal static Action<TSource, TValue> CreateSetterDelegate<TSource, TValue>(this PropertyInfo property)
         {
-            return (Action<TSource, TValue>) Delegate.CreateDelegate(typeof (Action<TSource, TValue>), property.SetMethod);
-        } 
+            return (Action<TSource, TValue>)Delegate.CreateDelegate(typeof(Action<TSource, TValue>), property.SetMethod);
+        }
+
+        // http://stackoverflow.com/a/16222886/1069200
+        internal static Action<TSource, TValue> CreateSetterDelegate<TSource, TValue>(this FieldInfo field)
+        {
+            string methodName = field.ReflectedType.FullName + ".set_" + field.Name;
+            var setterMethod = new DynamicMethod(methodName, null, new[] { typeof(TSource), typeof(TValue) }, true);
+            var gen = setterMethod.GetILGenerator();
+            gen.Emit(OpCodes.Ldarg_0);
+            gen.Emit(OpCodes.Ldarg_1);
+            gen.Emit(OpCodes.Stfld, field);
+            gen.Emit(OpCodes.Ret);
+            return (Action<TSource, TValue>)setterMethod.CreateDelegate(typeof(Action<TSource, TValue>));
+        }
 
         private class Setter<TSource, TValue> : ISetter
         {
