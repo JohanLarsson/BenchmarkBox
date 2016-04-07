@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AllocationBenchmarks.cs" />
+    <Compile Include="DictionaryLookup.cs" />
+    <Compile Include="EmitBenchmarks.cs" />
     <Compile Include="EqualsBenchmarks.cs" />
     <Compile Include="ISetter.cs" />
     <Compile Include="MemberDelegates.cs" />
