@@ -1,5 +1,3 @@
-using System.Linq.Expressions;
-
 namespace BenchmarkBox
 {
     using System;

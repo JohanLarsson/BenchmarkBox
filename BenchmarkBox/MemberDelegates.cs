@@ -22,13 +22,13 @@ namespace BenchmarkBox
         // http://stackoverflow.com/a/16222886/1069200
         internal static Action<TSource, TValue> CreateSetterDelegate<TSource, TValue>(this FieldInfo field)
         {
-            string methodName = field.ReflectedType.FullName + ".set_" + field.Name;
+            string methodName = $"{field.ReflectedType.FullName}.set_{field.Name}";
             var setterMethod = new DynamicMethod(methodName, null, new[] { typeof(TSource), typeof(TValue) }, true);
-            var gen = setterMethod.GetILGenerator();
-            gen.Emit(OpCodes.Ldarg_0);
-            gen.Emit(OpCodes.Ldarg_1);
-            gen.Emit(OpCodes.Stfld, field);
-            gen.Emit(OpCodes.Ret);
+            var ilGenerator = setterMethod.GetILGenerator();
+            ilGenerator.Emit(OpCodes.Ldarg_0);
+            ilGenerator.Emit(OpCodes.Ldarg_1);
+            ilGenerator.Emit(OpCodes.Stfld, field);
+            ilGenerator.Emit(OpCodes.Ret);
             return (Action<TSource, TValue>)setterMethod.CreateDelegate(typeof(Action<TSource, TValue>));
         }
 
