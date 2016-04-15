@@ -19,22 +19,36 @@ namespace BenchmarkBox
         [Benchmark(Baseline = true)]
         public int NewSet()
         {
-            var sortedSet = new SortedSet<int>();
-            sortedSet.Add(1);
-            sortedSet.Add(1);
-            sortedSet.Add(2);
-            return sortedSet.Count;
+            var set = new SortedSet<int> { 1, 1, 2 };
+            return set.Count;
         }
 
-        [Benchmark()]
-        public int Cached()
+        [Benchmark]
+        public int NewSetAdds()
         {
-            var sortedSet = Set.Value;
-            sortedSet.Add(1);
-            sortedSet.Add(1);
-            sortedSet.Add(2);
-            var count = sortedSet.Count;
-            sortedSet.Clear();
+            var set = new SortedSet<int>();
+            set.Clear();
+            set.Add(1);
+            set.Add(1);
+            set.Add(2);
+            return set.Count;
+        }
+
+        [Benchmark]
+        public SortedSet<int> GetValue()
+        {
+            return Set.Value;
+        }
+
+        [Benchmark]
+        public int CachedAdds()
+        {
+            var set = Set.Value;
+            set.Add(1);
+            set.Add(1);
+            set.Add(2);
+            var count = set.Count;
+            set.Clear();
             return count;
         }
     }
