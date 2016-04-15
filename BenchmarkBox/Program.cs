@@ -1,5 +1,7 @@
 ﻿namespace BenchmarkBox
 {
+    using System.Threading;
+
     using BenchmarkDotNet.Running;
 
     class Program
@@ -24,7 +26,8 @@
             //var summary = BenchmarkRunner.Run<AllocationBenchmarks>();
 
             //var summary = BenchmarkRunner.Run<EmitBenchmarks>();
-            var summary = BenchmarkRunner.Run<DictionaryLookup>();
+            //var summary = BenchmarkRunner.Run<DictionaryLookup>();
+            var summary = BenchmarkRunner.Run<ThreadLocalBenchmarks>();
         }
     }
 }
