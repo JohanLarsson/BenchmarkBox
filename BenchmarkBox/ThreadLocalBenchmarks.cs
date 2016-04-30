@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 
+using BenchmarkDotNet.Attributes;
+
 namespace BenchmarkBox
 {
     using System.Threading;
@@ -8,7 +10,8 @@ namespace BenchmarkBox
 
     public class ThreadLocalBenchmarks
     {
-        private static readonly ThreadLocal<SortedSet<int>> Set = new ThreadLocal<SortedSet<int>>(()=> new SortedSet<int>());
+        private static readonly ThreadLocal<SortedSet<int>> Set =
+            new ThreadLocal<SortedSet<int>>(() => new SortedSet<int>());
 
         public ThreadLocalBenchmarks()
         {

@@ -43,6 +43,7 @@
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Management" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AllocationBenchmarks.cs" />
@@ -51,7 +52,9 @@
     <Compile Include="EqualsBenchmarks.cs" />
     <Compile Include="ISetter.cs" />
     <Compile Include="MemberDelegates.cs" />
+    <Compile Include="ParseBenchmarks.cs" />
     <Compile Include="RaisePropertyChangedBenchmarks.cs" />
+    <Compile Include="RotateVector.cs" />
     <Compile Include="SetFieldBenchmarks.cs" />
     <Compile Include="SetPropertyBenchmarks.cs" />
     <Compile Include="Program.cs" />

@@ -1,7 +1,5 @@
 ﻿namespace BenchmarkBox
 {
-    using System.Threading;
-
     using BenchmarkDotNet.Running;
 
     class Program
@@ -19,15 +17,16 @@
             //                };
             //var switcher = new BenchmarkSwitcher( types);
             //switcher.Run();
-            //var summary = BenchmarkRunner.Run<EqualsBenchmarks>();
-            //var summary = BenchmarkRunner.Run<SetPropertyBenchmarks>();
-            //var summary = BenchmarkRunner.Run<SetFieldBenchmarks>();
-            //var summary = BenchmarkRunner.Run<RaisePropertyChangedBenchmarks>();
-            //var summary = BenchmarkRunner.Run<AllocationBenchmarks>();
+            //BenchmarkRunner.Run<EqualsBenchmarks>();
+            //BenchmarkRunner.Run<SetPropertyBenchmarks>();
+            //BenchmarkRunner.Run<SetFieldBenchmarks>();
+            //BenchmarkRunner.Run<RaisePropertyChangedBenchmarks>();
+            //BenchmarkRunner.Run<AllocationBenchmarks>();
 
-            //var summary = BenchmarkRunner.Run<EmitBenchmarks>();
-            //var summary = BenchmarkRunner.Run<DictionaryLookup>();
-            var summary = BenchmarkRunner.Run<ThreadLocalBenchmarks>();
+            //BenchmarkRunner.Run<EmitBenchmarks>();
+            //BenchmarkRunner.Run<DictionaryLookup>();
+            //BenchmarkRunner.Run<ThreadLocalBenchmarks>();
+            BenchmarkRunner.Run<RotateVector>();
         }
     }
 }
