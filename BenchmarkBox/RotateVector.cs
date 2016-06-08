@@ -8,17 +8,17 @@
     public class RotateVector
     {
         [Benchmark]
-        public double[] ArrayOfDoubles()
+        public double ArrayOfDoubles()
         {
             var v = new[] { 1.0, 2 };
-            return RotateRadians(v, 1);
+            return RotateRadians(v, 1)[0];
         }
 
         [Benchmark(Baseline = true)]
-        public Vector Vector()
+        public double Vector()
         {
             var v = new Vector(1, 2);
-            return RotateRadians(v, 1);
+            return RotateRadians(v, 1).X;
         }
 
         private static Vector RotateRadians(Vector v, double radians)

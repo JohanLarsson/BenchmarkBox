@@ -26,7 +26,8 @@
             //BenchmarkRunner.Run<EmitBenchmarks>();
             //BenchmarkRunner.Run<DictionaryLookup>();
             //BenchmarkRunner.Run<ThreadLocalBenchmarks>();
-            BenchmarkRunner.Run<RotateVector>();
+            //BenchmarkRunner.Run<RotateVector>();
+            BenchmarkRunner.Run<DeepCopy>();
         }
     }
 }
