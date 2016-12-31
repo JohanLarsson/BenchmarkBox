@@ -1,5 +1,6 @@
 ﻿namespace BenchmarkBox
 {
+    using System;
     using BenchmarkDotNet.Running;
 
     class Program
@@ -18,6 +19,7 @@
             //var switcher = new BenchmarkSwitcher( types);
             //switcher.Run();
             //BenchmarkRunner.Run<EqualsBenchmarks>();
+            BenchmarkRunner.Run<ExpressionBenchmarks>();
             //BenchmarkRunner.Run<SetPropertyBenchmarks>();
             //BenchmarkRunner.Run<SetFieldBenchmarks>();
             //BenchmarkRunner.Run<RaisePropertyChangedBenchmarks>();
@@ -28,8 +30,9 @@
             //BenchmarkRunner.Run<ThreadLocalBenchmarks>();
             //BenchmarkRunner.Run<RotateVector>();
             //BenchmarkRunner.Run<AlphabetBenchmark>();
-            BenchmarkRunner.Run<EnumDescription>();
-            BenchmarkRunner.Run<DictionaryBenchmarks>();
+            //BenchmarkRunner.Run<EnumDescription>();
+            //BenchmarkRunner.Run<DictionaryBenchmarks>();
+            //BenchmarkRunner.Run<DependencyPropertyBoxing>();
         }
     }
 }

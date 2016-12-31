@@ -1,39 +1,32 @@
 ﻿using BenchmarkDotNet.Attributes;
+using System.Collections.Generic;
 
 namespace BenchmarkBox
 {
-    public class EqualsBenchmarks
+public class EqualsBenchmarks
+{
+    [Benchmark(Baseline = true)]
+    public bool Equals()
     {
-        [Benchmark(Baseline = true)]
-        public bool IsCastEquals()
-        {
-            return IsCastEquals(true);
-        }
-
-        [Benchmark]
-        public bool ObjectEquals()
-        {
-            return ObjectEquals(true);
-        }
-
-        private static bool IsCastEquals(object value)
-        {
-            if (value is bool)
-            {
-                return (bool) value;
-            }
-
-            return false;
-        }
-
-        private static bool ObjectEquals(object value)
-        {
-            if (value is bool)
-            {
-                return Equals(value, true);
-            }
-
-            return false;
-        }
+        return 1.Equals(2);
     }
+
+    [Benchmark]
+    public bool OperatorEquals()
+    {
+        return 1 == 2;
+    }
+
+    [Benchmark]
+    public bool ObjectEquals()
+    {
+        return Equals(1, 2);
+    }
+
+    [Benchmark]
+    public bool EqualityComparerDefaultEquals()
+    {
+        return EqualityComparer<int>.Default.Equals(1, 2);
+    }
+}
 }
