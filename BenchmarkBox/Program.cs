@@ -19,7 +19,7 @@
             //var switcher = new BenchmarkSwitcher( types);
             //switcher.Run();
             //BenchmarkRunner.Run<EqualsBenchmarks>();
-            BenchmarkRunner.Run<ExpressionBenchmarks>();
+            //BenchmarkRunner.Run<ExpressionBenchmarks>();
             //BenchmarkRunner.Run<SetPropertyBenchmarks>();
             //BenchmarkRunner.Run<SetFieldBenchmarks>();
             //BenchmarkRunner.Run<RaisePropertyChangedBenchmarks>();
@@ -33,6 +33,7 @@
             //BenchmarkRunner.Run<EnumDescription>();
             //BenchmarkRunner.Run<DictionaryBenchmarks>();
             //BenchmarkRunner.Run<DependencyPropertyBoxing>();
+            BenchmarkRunner.Run<PropertyChangedEventArgsBenchmarks>();
         }
     }
 }

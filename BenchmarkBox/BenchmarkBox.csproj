@@ -96,6 +96,7 @@
     <Compile Include="ISetter.cs" />
     <Compile Include="MemberDelegates.cs" />
     <Compile Include="ParseBenchmarks.cs" />
+    <Compile Include="PropertyChangedEventArgsBenchmarks.cs" />
     <Compile Include="RaisePropertyChangedBenchmarks.cs" />
     <Compile Include="RotateVector.cs" />
     <Compile Include="SetFieldBenchmarks.cs" />

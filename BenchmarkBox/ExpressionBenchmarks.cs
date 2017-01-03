@@ -9,7 +9,6 @@
 
     public class ExpressionBenchmarks
     {
-
         private static readonly OpCode[] Codes = { OpCodes.Ldarg_1, OpCodes.Callvirt, OpCodes.Ret };
 
         private static readonly Type[] GenericTypeArguments = new Type[0];
