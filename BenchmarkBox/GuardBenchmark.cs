@@ -1,7 +1,6 @@
 ﻿namespace BenchmarkBox
 {
     using System;
-    using System.Collections.Concurrent;
     using System.Linq.Expressions;
     using BenchmarkDotNet.Attributes;
 
