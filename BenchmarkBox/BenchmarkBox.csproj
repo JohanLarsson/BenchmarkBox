@@ -58,6 +58,7 @@
     <Compile Include="EnumDescription.cs" />
     <Compile Include="EqualsBenchmarks.cs" />
     <Compile Include="ExpressionBenchmarks.cs" />
+    <Compile Include="GuardBenchmark.cs" />
     <Compile Include="ISetter.cs" />
     <Compile Include="MemberDelegates.cs" />
     <Compile Include="MemoryDiagnoserConfig.cs" />
@@ -76,6 +77,7 @@
     <None Include="App.config" />
     <None Include="DictionaryBenchmarks.md" />
     <None Include="ExpressionBenchmarks.md" />
+    <None Include="GuardBenchmark.md" />
     <None Include="paket.references" />
     <None Include="StringBenchmarks.md" />
   </ItemGroup>

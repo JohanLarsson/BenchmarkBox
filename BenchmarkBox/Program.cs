@@ -11,7 +11,7 @@
 
         public static void Main()
         {
-            foreach (var summary in RunSingle<DictionaryBenchmarks>())
+            foreach (var summary in RunSingle<GuardBenchmark>())
             {
                 CopyResult(summary.Title);
             }
