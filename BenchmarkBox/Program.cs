@@ -1,6 +1,5 @@
 ﻿namespace BenchmarkBox
 {
-    using System;
     using BenchmarkDotNet.Running;
 
     class Program
@@ -8,6 +7,8 @@
         // ReSharper disable once UnusedParameter.Local
         static void Main()
         {
+            BenchmarkRunner.Run<DictionaryBenchmarks>();
+
             //var types = new[]
             //                {
             //                    typeof(SetFieldBenchmarks),
@@ -33,7 +34,7 @@
             //BenchmarkRunner.Run<EnumDescription>();
             //BenchmarkRunner.Run<DictionaryBenchmarks>();
             //BenchmarkRunner.Run<DependencyPropertyBoxing>();
-            BenchmarkRunner.Run<PropertyChangedEventArgsBenchmarks>();
+            //BenchmarkRunner.Run<PropertyChangedEventArgsBenchmarks>();
         }
     }
 }

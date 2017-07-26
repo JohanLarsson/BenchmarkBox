@@ -28,20 +28,28 @@
         }
 
         [Benchmark]
-        public int DictionaryTryGetLock()
+        public int ConcurrentDictionaryDictionaryTryGet()
         {
-            lock (this.gate)
-            {
-                int result;
-                dictionary.TryGetValue(1, out result);
-                return result;
-            }
+            int result;
+            concurrent.TryGetValue(1, out result);
+            return result;
         }
 
-        [Benchmark]
-        public int ConcurrentGetOrAdd()
-        {
-            return concurrent.GetOrAdd(1, x => x);
-        }
+        //[Benchmark]
+        //public int DictionaryTryGetLock()
+        //{
+        //    lock (this.gate)
+        //    {
+        //        int result;
+        //        dictionary.TryGetValue(1, out result);
+        //        return result;
+        //    }
+        //}
+
+        //[Benchmark]
+        //public int ConcurrentGetOrAdd()
+        //{
+        //    return concurrent.GetOrAdd(1, x => x);
+        //}
     }
 }
