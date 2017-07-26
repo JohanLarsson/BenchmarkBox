@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 
-using BenchmarkDotNet.Attributes;
-
 namespace BenchmarkBox
 {
     using System.Threading;
