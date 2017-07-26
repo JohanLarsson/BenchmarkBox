@@ -9,7 +9,7 @@ public class DependencyPropertyBoxing
     private Foo foo;
 
     [STAThread]
-    [Setup]
+    [GlobalSetup]
     public void Setup()
     {
         this.foo = new Foo();

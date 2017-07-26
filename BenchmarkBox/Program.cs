@@ -1,40 +1,56 @@
 ﻿namespace BenchmarkBox
 {
+    using System.Collections.Generic;
+    using System.IO;
+    using BenchmarkDotNet.Reports;
     using BenchmarkDotNet.Running;
 
-    class Program
+    public class Program
     {
-        // ReSharper disable once UnusedParameter.Local
-        static void Main()
+        private static readonly string DestinationDirectory = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName);
+
+        public static void Main()
         {
-            BenchmarkRunner.Run<DictionaryBenchmarks>();
+            foreach (var summary in RunSingle<StringBenchmarks>())
+            {
+                CopyResult(summary.Title);
+            }
+        }
 
-            //var types = new[]
-            //                {
-            //                    typeof(SetFieldBenchmarks),
-            //                    typeof(SetPropertyBenchmarks),
-            //                    typeof(EqualsBenchmarks),
-            //                    typeof(AllocationBenchmarks),
-            //                    typeof(RaisePropertyChangedBenchmarks)
-            //                };
-            //var switcher = new BenchmarkSwitcher( types);
-            //switcher.Run();
-            //BenchmarkRunner.Run<EqualsBenchmarks>();
-            //BenchmarkRunner.Run<ExpressionBenchmarks>();
-            //BenchmarkRunner.Run<SetPropertyBenchmarks>();
-            //BenchmarkRunner.Run<SetFieldBenchmarks>();
-            //BenchmarkRunner.Run<RaisePropertyChangedBenchmarks>();
-            //BenchmarkRunner.Run<AllocationBenchmarks>();
+        private static IEnumerable<Summary> RunAll()
+        {
+            ////ClearAllResults();
+            var switcher = new BenchmarkSwitcher(typeof(Program).Assembly);
+            var summaries = switcher.Run(new[] { "*" });
+            return summaries;
+        }
 
-            //BenchmarkRunner.Run<EmitBenchmarks>();
-            //BenchmarkRunner.Run<DictionaryLookup>();
-            //BenchmarkRunner.Run<ThreadLocalBenchmarks>();
-            //BenchmarkRunner.Run<RotateVector>();
-            //BenchmarkRunner.Run<AlphabetBenchmark>();
-            //BenchmarkRunner.Run<EnumDescription>();
-            //BenchmarkRunner.Run<DictionaryBenchmarks>();
-            //BenchmarkRunner.Run<DependencyPropertyBoxing>();
-            //BenchmarkRunner.Run<PropertyChangedEventArgsBenchmarks>();
+        private static IEnumerable<Summary> RunSingle<T>()
+        {
+            var summaries = new[] { BenchmarkRunner.Run<T>() };
+            return summaries;
+        }
+
+        private static void CopyResult(string name)
+        {
+#if DEBUG
+#else
+            var sourceFileName = Path.Combine(Directory.GetCurrentDirectory(), "BenchmarkDotNet.Artifacts", "results", name + "-report-github.md");
+            Directory.CreateDirectory(DestinationDirectory);
+            var destinationFileName = Path.Combine(DestinationDirectory, name + ".md");
+            File.Copy(sourceFileName, destinationFileName, overwrite: true);
+#endif
+        }
+
+        private static void ClearAllResults()
+        {
+            if (Directory.Exists(DestinationDirectory))
+            {
+                foreach (var resultFile in Directory.EnumerateFiles(DestinationDirectory, "*.md"))
+                {
+                    File.Delete(resultFile);
+                }
+            }
         }
     }
 }
