@@ -6,50 +6,73 @@
 
     public class DictionaryBenchmarks
     {
-        private static readonly Dictionary<int, int> dictionary = new Dictionary<int, int>();
-        private static readonly ConcurrentDictionary<int, int> concurrent = new ConcurrentDictionary<int, int>();
+        private static readonly Dictionary<int, int> Dictionary = new Dictionary<int, int>();
+        private static readonly ConcurrentDictionary<int, int> Concurrent = new ConcurrentDictionary<int, int>();
         private readonly object gate = new object();
 
         static DictionaryBenchmarks()
         {
             for (int i = 0; i < 1000000; i++)
             {
-                dictionary[i] = i;
-                concurrent[i] = i;
+                Dictionary[i] = i;
+                Concurrent[i] = i;
             }
         }
 
         [Benchmark(Baseline = true)]
         public int DictionaryTryGet()
         {
-            int result;
-            dictionary.TryGetValue(1, out result);
+            Dictionary.TryGetValue(1, out int result);
             return result;
+        }
+
+        [Benchmark]
+        public int DictionaryTryGetMiss()
+        {
+            Dictionary.TryGetValue(-1, out int result);
+            return result;
+        }
+
+        [Benchmark]
+        public int DictionaryContainsGet()
+        {
+            if (Dictionary.ContainsKey(1))
+            {
+                return Dictionary[1];
+            }
+
+            return 0;
+        }
+
+        [Benchmark]
+        public bool DictionaryContainsMiss()
+        {
+            return Dictionary.ContainsKey(-1);
         }
 
         [Benchmark]
         public int ConcurrentDictionaryDictionaryTryGet()
         {
             int result;
-            concurrent.TryGetValue(1, out result);
+            Concurrent.TryGetValue(1, out result);
             return result;
         }
 
-        //[Benchmark]
-        //public int DictionaryTryGetLock()
-        //{
-        //    lock (this.gate)
-        //    {
-        //        int result;
-        //        dictionary.TryGetValue(1, out result);
-        //        return result;
-        //    }
-        //}
+        [Benchmark]
+        public int DictionaryTryGetLock()
+        {
+            lock (this.gate)
+            {
+                int result;
+                Dictionary.TryGetValue(1, out result);
+                return result;
+            }
+        }
 
-        //[Benchmark]
-        //public int ConcurrentGetOrAdd()
-        //{
-        //    return concurrent.GetOrAdd(1, x => x);
-        //}
+        [Benchmark]
+        public int ConcurrentGetOrAdd()
+        {
+            return Concurrent.GetOrAdd(1, x => x);
+        }
     }
 }
