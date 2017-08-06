@@ -11,7 +11,7 @@
 
         public static void Main()
         {
-            foreach (var summary in RunSingle<GuardBenchmark>())
+            foreach (var summary in RunSingle<Euler>())
             {
                 CopyResult(summary.Title);
             }

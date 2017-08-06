@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="AllocationBenchmarks.cs" />
     <Compile Include="AlphabetBenchmark.cs" />
+    <Compile Include="Euler.cs" />
     <Compile Include="DeepCopy.cs" />
     <Compile Include="DependencyPropertyBoxing.cs" />
     <Compile Include="DictionaryBenchmarks.cs" />
@@ -76,6 +77,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="DictionaryBenchmarks.md" />
+    <None Include="Euler.md" />
     <None Include="ExpressionBenchmarks.md" />
     <None Include="GuardBenchmark.md" />
     <None Include="paket.references" />
