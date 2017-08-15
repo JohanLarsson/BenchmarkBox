@@ -8,10 +8,12 @@ Frequency=2435874 Hz, Resolution=410.5303 ns, Timer=TSC
 
 
 ```
- |                                   Method |      Mean |     Error |    StdDev | Scaled | ScaledSD |  Gen 0 | Allocated |
- |----------------------------------------- |----------:|----------:|----------:|-------:|---------:|-------:|----------:|
- |                                 Contains |  70.70 ns | 1.3519 ns | 1.2645 ns |   1.00 |     0.00 |      - |       0 B |
- |                   ToLowerContainsToLower | 326.50 ns | 3.8655 ns | 3.4267 ns |   4.62 |     0.09 | 0.0205 |      44 B |
- | ToLowerInvariantContainsToLowerInvariant | 315.07 ns | 3.1498 ns | 2.9464 ns |   4.46 |     0.09 | 0.0205 |      44 B |
- |                           IndexOfOrdinal |  70.79 ns | 0.5184 ns | 0.4596 ns |   1.00 |     0.02 |      - |       0 B |
- |                 IndexOfOrdinalIgnoreCase | 192.91 ns | 2.1124 ns | 1.9760 ns |   2.73 |     0.05 |      - |       0 B |
+ |                                   Method |      Mean |     Error |    StdDev |    Median | Scaled | ScaledSD |  Gen 0 | Allocated |
+ |----------------------------------------- |----------:|----------:|----------:|----------:|-------:|---------:|-------:|----------:|
+ |                                 Contains |  72.55 ns |  1.499 ns |  1.540 ns |  71.80 ns |   1.00 |     0.00 |      - |       0 B |
+ |                   ToLowerContainsToLower | 397.60 ns |  7.992 ns | 19.902 ns | 391.54 ns |   5.48 |     0.29 | 0.0205 |      44 B |
+ | ToLowerInvariantContainsToLowerInvariant | 335.17 ns |  7.369 ns | 16.021 ns | 330.35 ns |   4.62 |     0.24 | 0.0205 |      44 B |
+ |                           IndexOfOrdinal |  76.66 ns |  2.537 ns |  7.319 ns |  72.93 ns |   1.06 |     0.10 |      - |       0 B |
+ |                 IndexOfOrdinalIgnoreCase | 145.33 ns |  2.493 ns |  2.082 ns | 145.13 ns |   2.00 |     0.05 |      - |       0 B |
+ |                                  IsMatch | 597.79 ns | 11.714 ns | 18.238 ns | 601.80 ns |   8.24 |     0.30 | 0.0830 |     176 B |
+ |                        IsMatchIgnoreCase | 664.44 ns | 13.944 ns | 33.677 ns | 657.29 ns |   9.16 |     0.50 | 0.0830 |     176 B |

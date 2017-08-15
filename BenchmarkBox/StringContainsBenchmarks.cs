@@ -1,6 +1,7 @@
 namespace BenchmarkBox
 {
     using System;
+    using System.Text.RegularExpressions;
     using BenchmarkDotNet.Attributes;
 
     public class StringContainsBenchmarks
@@ -36,6 +37,18 @@ namespace BenchmarkBox
         public bool IndexOfOrdinalIgnoreCase()
         {
             return A.IndexOf(B, StringComparison.OrdinalIgnoreCase) != -1;
+        }
+
+        [Benchmark]
+        public bool IsMatch()
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(A, B);
+        }
+
+        [Benchmark]
+        public bool IsMatchIgnoreCase()
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(A, B, RegexOptions.IgnoreCase);
         }
     }
 }
