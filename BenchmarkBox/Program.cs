@@ -11,7 +11,7 @@
 
         public static void Main()
         {
-            foreach (var summary in RunSingle<StringContainsBenchmarks>())
+            foreach (var summary in RunSingle<DictionaryVsArrayLookup>())
             {
                 CopyResult(summary.Title);
             }

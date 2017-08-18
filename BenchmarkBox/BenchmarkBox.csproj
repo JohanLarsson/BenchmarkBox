@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="AllocationBenchmarks.cs" />
     <Compile Include="AlphabetBenchmark.cs" />
+    <Compile Include="DictionaryVsArrayLookup.cs" />
     <Compile Include="Euler.cs" />
     <Compile Include="DeepCopy.cs" />
     <Compile Include="DependencyPropertyBoxing.cs" />
