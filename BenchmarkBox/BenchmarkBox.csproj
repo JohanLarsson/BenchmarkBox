@@ -79,6 +79,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="DictionaryBenchmarks.md" />
+    <None Include="DictionaryVsArrayLookup.md" />
     <None Include="Euler.md" />
     <None Include="ExpressionBenchmarks.md" />
     <None Include="GuardBenchmark.md" />
