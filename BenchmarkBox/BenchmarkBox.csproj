@@ -67,6 +67,7 @@
     <Compile Include="ParseBenchmarks.cs" />
     <Compile Include="PropertyChangedEventArgsBenchmarks.cs" />
     <Compile Include="RaisePropertyChangedBenchmarks.cs" />
+    <Compile Include="RegexBenchmarks.cs" />
     <Compile Include="RotateVector.cs" />
     <Compile Include="SetFieldBenchmarks.cs" />
     <Compile Include="SetPropertyBenchmarks.cs" />
@@ -84,6 +85,7 @@
     <None Include="ExpressionBenchmarks.md" />
     <None Include="GuardBenchmark.md" />
     <None Include="paket.references" />
+    <None Include="RegexBenchmarks.md" />
     <None Include="StringBenchmarks.md" />
     <None Include="StringContainsBenchmarks.md" />
   </ItemGroup>
