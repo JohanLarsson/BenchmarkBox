@@ -15,34 +15,44 @@ namespace BenchmarkBox
 
         public int ExpressionValue
         {
-            get { return expressionValue; }
+            get => this.expressionValue;
             set
             {
-                expressionValue = value;
-                OnPropertyChanged(() => ExpressionValue);
+                if (value == this.expressionValue)
+                {
+                    return;
+                }
+
+                this.expressionValue = value;
+                this.OnPropertyChanged(() => this.ExpressionValue);
             }
         }
 
         public int CallerMemberNameValue
         {
-            get { return callerMemberNameValue; }
+            get => this.callerMemberNameValue;
             set
             {
-                callerMemberNameValue = value;
-                OnPropertyChanged();
+                if (value == this.callerMemberNameValue)
+                {
+                    return;
+                }
+
+                this.callerMemberNameValue = value;
+                this.OnPropertyChanged();
             }
         }
 
         [Benchmark]
         public void SetWithExpression()
         {
-            ExpressionValue++;
+            this.ExpressionValue++;
         }
 
         [Benchmark(Baseline = true)]
         public void SetWithCallerMemberName()
         {
-            CallerMemberNameValue++;
+            this.CallerMemberNameValue++;
         }
 
         protected void OnPropertyChanged<T>(Expression<Func<T>> expression)
@@ -54,7 +64,7 @@ namespace BenchmarkBox
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
