@@ -11,7 +11,7 @@
 
         public static void Main()
         {
-            foreach (var summary in RunSingle<RaisePropertyChangedBenchmarks>())
+            foreach (var summary in RunSingle<EqualsBenchmarks>())
             {
                 CopyResult(summary.Title);
             }
