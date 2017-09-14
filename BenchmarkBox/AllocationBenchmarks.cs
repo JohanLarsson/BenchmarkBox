@@ -1,9 +1,9 @@
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using BenchmarkDotNet.Attributes;
-
 namespace BenchmarkBox
 {
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using BenchmarkDotNet.Attributes;
+
     public class AllocationBenchmarks
     {
         [Benchmark]
