@@ -10,5 +10,5 @@ Frequency=2435874 Hz, Resolution=410.5303 ns, Timer=TSC
 ```
  |                  Method |         Mean |      Error |     StdDev | Scaled | ScaledSD |  Gen 0 | Allocated |
  |------------------------ |-------------:|-----------:|-----------:|-------:|---------:|-------:|----------:|
- |       SetWithExpression | 1,166.379 ns | 24.2823 ns | 43.1617 ns | 299.56 |    13.59 | 0.0954 |     204 B |
- | SetWithCallerMemberName |     3.897 ns |  0.1122 ns |  0.1102 ns |   1.00 |     0.00 |      - |       0 B |
+ |       SetWithExpression | 1,096.143 ns | 21.1045 ns | 21.6728 ns | 287.35 |     7.31 | 0.0954 |     204 B |
+ | SetWithCallerMemberName |     3.816 ns |  0.0708 ns |  0.0662 ns |   1.00 |     0.00 |      - |       0 B |

@@ -1,3 +1,4 @@
+storage: none
 source https://www.nuget.org/api/v2/
 framework: net461
 redirects: on
