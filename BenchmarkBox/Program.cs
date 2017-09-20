@@ -1,5 +1,6 @@
 ﻿namespace BenchmarkBox
 {
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using BenchmarkDotNet.Reports;
@@ -7,11 +8,15 @@
 
     public class Program
     {
-        private static readonly string DestinationDirectory = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName);
+        private static readonly string ProjectDirectory = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName);
+
+        public static string BenchmarksDirectory { get; } = Path.Combine(ProjectDirectory, "Benchmarks");
+
+        private static string ArtifactsDirectory { get; } = Path.Combine(ProjectDirectory, "BenchmarkDotNet.Artifacts", "results");
 
         public static void Main()
         {
-            foreach (var summary in RunSingle<EqualsBenchmarks>())
+            foreach (var summary in RunSingle<DistinctByBenchmarks>())
             {
                 CopyResult(summary.Title);
             }
@@ -19,7 +24,6 @@
 
         private static IEnumerable<Summary> RunAll()
         {
-            ////ClearAllResults();
             var switcher = new BenchmarkSwitcher(typeof(Program).Assembly);
             var summaries = switcher.Run(new[] { "*" });
             return summaries;
@@ -33,23 +37,13 @@
 
         private static void CopyResult(string name)
         {
-#if DEBUG
-#else
-            var sourceFileName = Path.Combine(Directory.GetCurrentDirectory(), "BenchmarkDotNet.Artifacts", "results", name + "-report-github.md");
-            Directory.CreateDirectory(DestinationDirectory);
-            var destinationFileName = Path.Combine(DestinationDirectory, name + ".md");
-            File.Copy(sourceFileName, destinationFileName, overwrite: true);
-#endif
-        }
-
-        private static void ClearAllResults()
-        {
-            if (Directory.Exists(DestinationDirectory))
+            Console.WriteLine($"DestinationDirectory: {BenchmarksDirectory}");
+            if (Directory.Exists(BenchmarksDirectory))
             {
-                foreach (var resultFile in Directory.EnumerateFiles(DestinationDirectory, "*.md"))
-                {
-                    File.Delete(resultFile);
-                }
+                var sourceFileName = Path.Combine(ArtifactsDirectory, name + "-report-github.md");
+                var destinationFileName = Path.Combine(BenchmarksDirectory, name + ".md");
+                Console.WriteLine($"Copy: {sourceFileName} -> {destinationFileName}");
+                File.Copy(sourceFileName, destinationFileName, overwrite: true);
             }
         }
     }
