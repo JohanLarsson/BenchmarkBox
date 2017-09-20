@@ -8,14 +8,18 @@
 
     public class Program
     {
-        private static readonly string ProjectDirectory = Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName);
-
-        public static string BenchmarksDirectory { get; } = Path.Combine(ProjectDirectory, "Benchmarks");
+        private static readonly string ProjectDirectory = Directory.GetCurrentDirectory();
 
         private static string ArtifactsDirectory { get; } = Path.Combine(ProjectDirectory, "BenchmarkDotNet.Artifacts", "results");
 
         public static void Main()
         {
+            var file = Path.Combine(ProjectDirectory, "BenchmarkBox.csproj");
+            if (!File.Exists(file))
+            {
+                throw new FileNotFoundException(file);
+            }
+
             foreach (var summary in RunSingle<DistinctByBenchmarks>())
             {
                 CopyResult(summary.Title);
@@ -37,11 +41,11 @@
 
         private static void CopyResult(string name)
         {
-            Console.WriteLine($"DestinationDirectory: {BenchmarksDirectory}");
-            if (Directory.Exists(BenchmarksDirectory))
+            Console.WriteLine($"DestinationDirectory: {ProjectDirectory}");
+            if (Directory.Exists(ProjectDirectory))
             {
                 var sourceFileName = Path.Combine(ArtifactsDirectory, name + "-report-github.md");
-                var destinationFileName = Path.Combine(BenchmarksDirectory, name + ".md");
+                var destinationFileName = Path.Combine(ProjectDirectory, name + ".md");
                 Console.WriteLine($"Copy: {sourceFileName} -> {destinationFileName}");
                 File.Copy(sourceFileName, destinationFileName, overwrite: true);
             }
