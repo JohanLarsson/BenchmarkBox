@@ -20,7 +20,7 @@
                 throw new FileNotFoundException(file);
             }
 
-            foreach (var summary in RunSingle<DistinctByBenchmarks>())
+            foreach (var summary in RunSingle<StatesBenchmark>())
             {
                 CopyResult(summary.Title);
             }
