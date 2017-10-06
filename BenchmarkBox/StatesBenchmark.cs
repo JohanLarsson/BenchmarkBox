@@ -7,11 +7,18 @@
 
     public class StatesBenchmark
     {
-        private static readonly Dictionary<State, string> Map = Enum.GetValues(typeof(State))
+        private static readonly Dictionary<State, string> MapWithComparer = Enum.GetValues(typeof(State))
             .Cast<State>()
-            .ToDictionary(x => x,
+            .ToDictionary(
+                x => x,
                 x => GetState(x),
                 new StateComparer());
+
+        private static readonly Dictionary<State, string> Map = Enum.GetValues(typeof(State))
+            .Cast<State>()
+            .ToDictionary(
+                x => x,
+                x => GetState(x));
 
         [Benchmark(Baseline = true)]
         public string SwitchAL()
@@ -26,13 +33,26 @@
         }
 
         [Benchmark]
-        public string DictionaryAL()
+        public string DictionaryWithComparerAL()
+        {
+            return MapWithComparer[State.AL];
+        }
+
+        [Benchmark]
+        public string DictionaryWithComparerWY()
+        {
+            return MapWithComparer[State.WY];
+        }
+
+
+        [Benchmark]
+        public string DictionaryBoxingAL()
         {
             return Map[State.AL];
         }
 
         [Benchmark]
-        public string DictionaryWY()
+        public string DictionaryBoxingWY()
         {
             return Map[State.WY];
         }
