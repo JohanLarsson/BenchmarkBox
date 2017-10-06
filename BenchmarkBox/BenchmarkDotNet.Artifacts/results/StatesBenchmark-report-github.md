@@ -8,9 +8,11 @@ Frequency=2435868 Hz, Resolution=410.5313 ns, Timer=TSC
 
 
 ```
- |       Method |      Mean |     Error |    StdDev | Scaled | ScaledSD | Allocated |
- |------------- |----------:|----------:|----------:|-------:|---------:|----------:|
- |     SwitchAL |  3.354 ns | 0.1497 ns | 0.1400 ns |   1.00 |     0.00 |       0 B |
- |     SwitchWY |  3.186 ns | 0.1035 ns | 0.0864 ns |   0.95 |     0.05 |       0 B |
- | DictionaryAL | 12.715 ns | 0.2038 ns | 0.1806 ns |   3.80 |     0.16 |       0 B |
- | DictionaryWY | 12.021 ns | 0.2062 ns | 0.1929 ns |   3.59 |     0.15 |       0 B |
+ |                   Method |      Mean |     Error |    StdDev | Scaled | ScaledSD | Allocated |
+ |------------------------- |----------:|----------:|----------:|-------:|---------:|----------:|
+ |                 SwitchAL |  3.300 ns | 0.0820 ns | 0.0727 ns |   1.00 |     0.00 |       0 B |
+ |                 SwitchWY |  2.187 ns | 0.0812 ns | 0.0678 ns |   0.66 |     0.02 |       0 B |
+ | DictionaryWithComparerAL | 12.679 ns | 0.3486 ns | 0.3874 ns |   3.84 |     0.14 |       0 B |
+ | DictionaryWithComparerWY | 12.818 ns | 0.2721 ns | 0.2412 ns |   3.89 |     0.11 |       0 B |
+ |       DictionaryBoxingAL | 12.446 ns | 0.3492 ns | 0.5118 ns |   3.77 |     0.17 |       0 B |
+ |       DictionaryBoxingWY | 12.260 ns | 0.3414 ns | 0.3932 ns |   3.72 |     0.14 |       0 B |
