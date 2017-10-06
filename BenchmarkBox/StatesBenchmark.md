@@ -8,11 +8,13 @@ Frequency=2435868 Hz, Resolution=410.5313 ns, Timer=TSC
 
 
 ```
- |                   Method |      Mean |     Error |    StdDev | Scaled | ScaledSD | Allocated |
- |------------------------- |----------:|----------:|----------:|-------:|---------:|----------:|
- |                 SwitchAL |  3.300 ns | 0.0820 ns | 0.0727 ns |   1.00 |     0.00 |       0 B |
- |                 SwitchWY |  2.187 ns | 0.0812 ns | 0.0678 ns |   0.66 |     0.02 |       0 B |
- | DictionaryWithComparerAL | 12.679 ns | 0.3486 ns | 0.3874 ns |   3.84 |     0.14 |       0 B |
- | DictionaryWithComparerWY | 12.818 ns | 0.2721 ns | 0.2412 ns |   3.89 |     0.11 |       0 B |
- |       DictionaryBoxingAL | 12.446 ns | 0.3492 ns | 0.5118 ns |   3.77 |     0.17 |       0 B |
- |       DictionaryBoxingWY | 12.260 ns | 0.3414 ns | 0.3932 ns |   3.72 |     0.14 |       0 B |
+ |                   Method |      Mean |     Error |    StdDev |    Median | Scaled | ScaledSD | Allocated |
+ |------------------------- |----------:|----------:|----------:|----------:|-------:|---------:|----------:|
+ |                 SwitchAL |  3.218 ns | 0.1117 ns | 0.1045 ns |  3.211 ns |   1.00 |     0.00 |       0 B |
+ |                 SwitchWY |  2.432 ns | 0.0521 ns | 0.0488 ns |  2.444 ns |   0.76 |     0.03 |       0 B |
+ | DictionaryWithComparerAL | 12.982 ns | 0.3168 ns | 0.2963 ns | 13.127 ns |   4.04 |     0.15 |       0 B |
+ | DictionaryWithComparerWY | 14.132 ns | 0.6164 ns | 1.8079 ns | 13.308 ns |   4.40 |     0.58 |       0 B |
+ |       DictionaryBoxingAL | 12.246 ns | 0.1772 ns | 0.1383 ns | 12.281 ns |   3.81 |     0.13 |       0 B |
+ |       DictionaryBoxingWY | 13.384 ns | 0.3629 ns | 0.6544 ns | 13.162 ns |   4.16 |     0.24 |       0 B |
+ |       DictionaryStringAL | 29.169 ns | 0.4246 ns | 0.3972 ns | 29.242 ns |   9.07 |     0.31 |       0 B |
+ |      DictionaryStringrWY | 28.865 ns | 0.3348 ns | 0.2968 ns | 28.877 ns |   8.98 |     0.29 |       0 B |

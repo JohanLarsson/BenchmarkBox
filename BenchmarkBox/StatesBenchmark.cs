@@ -20,6 +20,12 @@
                 x => x,
                 x => GetState(x));
 
+        private static readonly Dictionary<string, string> StringMap = Enum.GetValues(typeof(State))
+            .Cast<State>()
+            .ToDictionary(
+                x => x.ToString(),
+                x => GetState(x));
+
         [Benchmark(Baseline = true)]
         public string SwitchAL()
         {
@@ -55,6 +61,19 @@
         public string DictionaryBoxingWY()
         {
             return Map[State.WY];
+        }
+
+
+        [Benchmark]
+        public string DictionaryStringAL()
+        {
+            return StringMap["AL"];
+        }
+
+        [Benchmark]
+        public string DictionaryStringrWY()
+        {
+            return StringMap["WY"];
         }
 
         public enum State
