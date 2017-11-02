@@ -1,16 +1,16 @@
 ``` ini
 
-BenchmarkDotNet=v0.10.8, OS=Windows 10 Redstone 2 (10.0.15063)
-Processor=Intel Core i7-3667U CPU 2.00GHz (Ivy Bridge), ProcessorCount=4
-Frequency=2435883 Hz, Resolution=410.5287 ns, Timer=TSC
-  [Host]     : Clr 4.0.30319.42000, 32bit LegacyJIT-v4.7.2101.1
-  DefaultJob : Clr 4.0.30319.42000, 32bit LegacyJIT-v4.7.2101.1
+BenchmarkDotNet=v0.10.9, OS=Windows 7 SP1 (6.1.7601)
+Processor=Intel Xeon CPU E5-2637 v4 3.50GHzIntel Xeon CPU E5-2637 v4 3.50GHz, ProcessorCount=16
+Frequency=3410097 Hz, Resolution=293.2468 ns, Timer=TSC
+  [Host]     : .NET Framework 4.7 (CLR 4.0.30319.42000), 64bit RyuJIT-v4.7.2116.0
+  DefaultJob : .NET Framework 4.7 (CLR 4.0.30319.42000), 64bit RyuJIT-v4.7.2116.0
 
 
 ```
- |              Method |      Mean |     Error |    StdDev | Scaled | ScaledSD |  Gen 0 |  Gen 1 |  Gen 2 | Allocated |
- |-------------------- |----------:|----------:|----------:|-------:|---------:|-------:|-------:|-------:|----------:|
- |              Concat |  20.42 ns | 0.3408 ns | 0.3188 ns |   1.00 |     0.00 | 0.0095 |      - |      - |      20 B |
- |         Interpolate | 111.36 ns | 2.4255 ns | 5.4251 ns |   5.46 |     0.28 | 0.0094 |      - |      - |      20 B |
- |       StringBuilder |  44.33 ns | 0.5800 ns | 0.5425 ns |   2.17 |     0.04 | 0.0438 |      - |      - |      92 B |
- | PooledStringBuilder |  76.51 ns | 2.0575 ns | 1.9246 ns |   3.75 |     0.11 | 0.0061 | 0.0029 | 0.0001 |      27 B |
+ |              Method |     Mean |    Error |    StdDev | Scaled | ScaledSD |  Gen 0 |  Gen 1 |  Gen 2 | Allocated |
+ |-------------------- |---------:|---------:|----------:|-------:|---------:|-------:|-------:|-------:|----------:|
+ |              Concat | 165.7 ns | 3.377 ns |  9.414 ns |   1.00 |     0.00 | 0.0405 |      - |      - |     256 B |
+ |         Interpolate | 279.4 ns | 5.957 ns | 17.378 ns |   1.69 |     0.14 | 0.0224 |      - |      - |     144 B |
+ |       StringBuilder | 179.3 ns | 3.619 ns |  8.458 ns |   1.09 |     0.08 | 0.0520 |      - |      - |     328 B |
+ | PooledStringBuilder | 169.8 ns | 3.464 ns |  7.307 ns |   1.03 |     0.07 | 0.0210 | 0.0095 | 0.0002 |     133 B |
