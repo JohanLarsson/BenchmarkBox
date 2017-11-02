@@ -13,20 +13,21 @@
 </head>
 <body>
 <pre><code>
-BenchmarkDotNet=v0.10.9, OS=Windows 7 SP1 (6.1.7601)
-Processor=Intel Xeon CPU E5-2637 v4 3.50GHzIntel Xeon CPU E5-2637 v4 3.50GHz, ProcessorCount=16
-Frequency=3410097 Hz, Resolution=293.2468 ns, Timer=TSC
-  [Host]     : .NET Framework 4.7 (CLR 4.0.30319.42000), 64bit RyuJIT-v4.7.2116.0
-  DefaultJob : .NET Framework 4.7 (CLR 4.0.30319.42000), 64bit RyuJIT-v4.7.2116.0
+BenchmarkDotNet=v0.10.9, OS=Windows 10 Redstone 2 (10.0.15063)
+Processor=Intel Core i7-3667U CPU 2.00GHz (Ivy Bridge), ProcessorCount=4
+Frequency=2435876 Hz, Resolution=410.5299 ns, Timer=TSC
+  [Host]     : .NET Framework 4.7 (CLR 4.0.30319.42000), 64bit RyuJIT-v4.7.2115.0
+  DefaultJob : .NET Framework 4.7 (CLR 4.0.30319.42000), 64bit RyuJIT-v4.7.2115.0
 </code></pre>
 <pre><code></code></pre>
 
 <table>
-<thead><tr><th>            Method</th><th>      Mean</th><th>   Error</th><th>   StdDev</th><th>Scaled</th><th>ScaledSD</th><th>Gen 0</th><th>Gen 1</th><th>Allocated</th>
+<thead><tr><th>                Method</th><th> Mean</th><th>Error</th><th>StdDev</th><th>Scaled</th><th>ScaledSD</th><th>Gen 0</th><th>Gen 1</th><th>Allocated</th>
 </tr>
-</thead><tbody><tr><td>            NewFoo</td><td>  3.560 ns</td><td>0.1500 ns</td><td>0.4254 ns</td><td>1.00</td><td>0.00</td><td>0.0038</td><td>-</td><td>24 B</td>
-</tr><tr><td>        MockOfIFoo</td><td>1,136,309.451 ns</td><td>31,751.9711 ns</td><td>93,621.4032 ns</td><td>323,663.61</td><td>46,408.86</td><td>5.8594</td><td>1.9531</td><td>51458 B</td>
-</tr><tr><td>MockOfIFooWithExpression</td><td>2,460,603.594 ns</td><td>61,109.8930 ns</td><td>178,260.4262 ns</td><td>700,872.33</td><td>96,641.84</td><td>11.7188</td><td>3.9063</td><td>82529 B</td>
+</thead><tbody><tr><td>      SubstituteForFoo</td><td>10.32 us</td><td>0.2227 us</td><td>0.4073 us</td><td>1.00</td><td>0.00</td><td>3.1738</td><td>-</td><td>6.5 KB</td>
+</tr><tr><td>SubstituteForFooValueReturns</td><td>23.03 us</td><td>0.3219 us</td><td>0.3011 us</td><td>2.23</td><td>0.09</td><td>5.3406</td><td>-</td><td>10.94 KB</td>
+</tr><tr><td>            MockOfIFoo</td><td>1,099.42 us</td><td>14.7704 us</td><td>12.3339 us</td><td>106.67</td><td>4.13</td><td>23.4375</td><td>7.8125</td><td>48.64 KB</td>
+</tr><tr><td>MockOfIFooWithExpression</td><td>2,477.31 us</td><td>24.0851 us</td><td>22.5292 us</td><td>240.37</td><td>9.18</td><td>35.1563</td><td>11.7188</td><td>79.07 KB</td>
 </tr></tbody></table>
 </body>
 </html>

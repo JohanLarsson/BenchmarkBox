@@ -1,3 +1,4 @@
 BenchmarkDotNet
 Newtonsoft.Json
 Moq
+NSubstitute
