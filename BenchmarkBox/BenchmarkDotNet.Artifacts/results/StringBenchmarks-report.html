@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>StringBenchmarks</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.10.9, OS=Windows 7 SP1 (6.1.7601)
+Processor=Intel Xeon CPU E5-2637 v4 3.50GHzIntel Xeon CPU E5-2637 v4 3.50GHz, ProcessorCount=16
+Frequency=3410097 Hz, Resolution=293.2468 ns, Timer=TSC
+  [Host]     : .NET Framework 4.7 (CLR 4.0.30319.42000), 64bit RyuJIT-v4.7.2116.0
+  DefaultJob : .NET Framework 4.7 (CLR 4.0.30319.42000), 64bit RyuJIT-v4.7.2116.0
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>       Method</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Scaled</th><th>ScaledSD</th><th>Gen 0</th><th>Gen 1</th><th>Gen 2</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>       Concat</td><td>165.7 ns</td><td>3.377 ns</td><td>9.414 ns</td><td>1.00</td><td>0.00</td><td>0.0405</td><td>-</td><td>-</td><td>256 B</td>
+</tr><tr><td>  Interpolate</td><td>279.4 ns</td><td>5.957 ns</td><td>17.378 ns</td><td>1.69</td><td>0.14</td><td>0.0224</td><td>-</td><td>-</td><td>144 B</td>
+</tr><tr><td>StringBuilder</td><td>179.3 ns</td><td>3.619 ns</td><td>8.458 ns</td><td>1.09</td><td>0.08</td><td>0.0520</td><td>-</td><td>-</td><td>328 B</td>
+</tr><tr><td>PooledStringBuilder</td><td>169.8 ns</td><td>3.464 ns</td><td>7.307 ns</td><td>1.03</td><td>0.07</td><td>0.0210</td><td>0.0095</td><td>0.0002</td><td>133 B</td>
+</tr></tbody></table>
+</body>
+</html>

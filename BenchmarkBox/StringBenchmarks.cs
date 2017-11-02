@@ -6,38 +6,37 @@
 
     public class StringBenchmarks
     {
-        private static readonly string A = "a";
-        private static readonly string B = "b";
+        private static readonly string Name = "a";
+        private static readonly int Year =2017;
         private static readonly ConcurrentQueue<StringBuilder> Pool = new ConcurrentQueue<StringBuilder>();
 
         [Benchmark(Baseline = true)]
         public string Concat()
         {
-            return A + B;
+            return "Title: " + Name + " Premiered in: " + Year;
         }
 
         [Benchmark]
         public string Interpolate()
         {
-            return $"{A}{B}";
+            return $"Title: {Name} Premiered in: {Year}";
         }
 
         [Benchmark]
         public string StringBuilder()
         {
-            return new StringBuilder().Append("a").Append("b").ToString();
+            return new StringBuilder().Append("Title: ").Append(Name).Append(" Premiered in: ").Append(Year).ToString();
         }
 
         [Benchmark]
         public string PooledStringBuilder()
         {
-            System.Text.StringBuilder builder;
-            if (!Pool.TryDequeue(out builder))
+            if (!Pool.TryDequeue(out var builder))
             {
                 builder = new StringBuilder();
             }
 
-            var text = builder.Append("a").Append("b").ToString();
+            var text = builder.Append("Title: ").Append(Name).Append(" Premiered in: ").Append(Year).ToString();
             builder.Clear();
             Pool.Enqueue(builder);
             return text;
