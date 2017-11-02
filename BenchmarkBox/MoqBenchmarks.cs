@@ -2,13 +2,20 @@
 {
     using BenchmarkDotNet.Attributes;
     using Moq;
+    using NSubstitute;
 
     public class MoqBenchmarks
     {
         [Benchmark(Baseline = true)]
-        public object NewFoo()
+        public object SubstituteForFoo()
         {
-            return new Foo(1);
+            return Substitute.For<IFoo>();
+        }
+
+        [Benchmark]
+        public object SubstituteForFooValueReturns()
+        {
+            return Substitute.For<IFoo>().Value.Returns(1);
         }
 
         [Benchmark]
