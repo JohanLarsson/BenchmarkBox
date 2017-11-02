@@ -6,6 +6,11 @@
 
     public class MoqBenchmarks
     {
+        public interface IFoo
+        {
+            int Value { get; }
+        }
+
         [Benchmark(Baseline = true)]
         public object SubstituteForFoo()
         {
@@ -28,21 +33,6 @@
         public object MockOfIFooWithExpression()
         {
             return Mock.Of<IFoo>(x => x.Value == 1);
-        }
-
-        public interface IFoo
-        {
-            int Value { get; }
-        }
-
-        private class Foo : IFoo
-        {
-            public Foo(int value)
-            {
-                Value = value;
-            }
-
-            public int Value { get; }
         }
     }
 }
