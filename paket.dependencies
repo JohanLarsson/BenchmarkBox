@@ -5,3 +5,4 @@ redirects: on
 
 nuget BenchmarkDotNet.Diagnostics.Windows
 nuget Newtonsoft.Json
+nuget Moq

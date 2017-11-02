@@ -20,7 +20,7 @@
                 throw new FileNotFoundException(file);
             }
 
-            foreach (var summary in RunSingle<StringBenchmarks>())
+            foreach (var summary in RunSingle<MoqBenchmarks>())
             {
                 CopyResult(summary.Title);
             }
