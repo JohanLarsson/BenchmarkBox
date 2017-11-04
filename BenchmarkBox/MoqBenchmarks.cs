@@ -4,6 +4,7 @@
     using Moq;
     using NSubstitute;
 
+
     public class MoqBenchmarks
     {
         public interface IFoo

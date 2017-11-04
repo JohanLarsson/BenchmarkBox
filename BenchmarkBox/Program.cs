@@ -20,7 +20,7 @@
                 throw new FileNotFoundException(file);
             }
 
-            foreach (var summary in RunSingle<MoqBenchmarks>())
+            foreach (var summary in RunSingle<TaskBenchmarks>())
             {
                 CopyResult(summary.Title);
             }
