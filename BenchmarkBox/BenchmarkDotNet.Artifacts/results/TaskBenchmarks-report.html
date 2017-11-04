@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>TaskBenchmarks</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.10.9, OS=Windows 10 Redstone 2 (10.0.15063)
+Processor=Intel Core i7-3667U CPU 2.00GHz (Ivy Bridge), ProcessorCount=4
+Frequency=2435876 Hz, Resolution=410.5299 ns, Timer=TSC
+  [Host]     : .NET Framework 4.7 (CLR 4.0.30319.42000), 64bit RyuJIT-v4.7.2115.0
+  DefaultJob : .NET Framework 4.7 (CLR 4.0.30319.42000), 64bit RyuJIT-v4.7.2115.0
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>              Method</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Scaled</th><th>Gen 0</th><th>Gen 1</th><th>Gen 2</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>TaskRunConfigureAwaitFalse</td><td>308.9 ns</td><td>1.066 ns</td><td>0.9449 ns</td><td>1.00</td><td>0.0191</td><td>0.0053</td><td>0.0005</td><td>88 B</td>
+</tr><tr><td>TaskRunConfigureAwaitTrue</td><td>308.2 ns</td><td>1.263 ns</td><td>1.1195 ns</td><td>1.00</td><td>0.0191</td><td>0.0053</td><td>0.0005</td><td>88 B</td>
+</tr></tbody></table>
+</body>
+</html>
