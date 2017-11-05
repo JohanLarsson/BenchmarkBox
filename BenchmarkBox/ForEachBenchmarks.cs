@@ -12,7 +12,7 @@
         [Benchmark(Baseline = true)]
         public int ExtensionMethod()
         {
-            Ints.ForEach(x => value = x);
+            EnumerableExt.ForEach(Ints, x => value = x);
             return value;
         }
 
