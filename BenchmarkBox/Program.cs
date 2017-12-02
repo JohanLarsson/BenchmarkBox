@@ -20,7 +20,7 @@
                 throw new FileNotFoundException(file);
             }
 
-            foreach (var summary in RunSingle<EnumToStringBenchmarks>())
+            foreach (var summary in RunSingle<UnitVectorBenchmarks>())
             {
                 CopyResult(summary.Title);
             }
