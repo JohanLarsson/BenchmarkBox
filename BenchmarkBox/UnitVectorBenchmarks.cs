@@ -1,29 +1,34 @@
 ﻿namespace BenchmarkBox
 {
     using System;
+    using System.Runtime.CompilerServices;
     using BenchmarkDotNet.Attributes;
 
     public class UnitVectorBenchmarks
     {
         [Benchmark(Baseline = true)]
+        [MethodImpl(MethodImplOptions.NoOptimization)]
         public double CreateUnitVectorReturnX()
         {
             return new UnitVector(1, 2).X;
         }
 
         [Benchmark]
+        [MethodImpl(MethodImplOptions.NoOptimization)]
         public double CreateCheckedUnitVectorReturnX()
         {
             return new CheckedUnitVector(1, 2).X;
         }
 
         [Benchmark]
+        [MethodImpl(MethodImplOptions.NoOptimization)]
         public double CreateCheckedUnitVectorNullableReturnX()
         {
             return new CheckedUnitVectorNullable(1, 2).X;
         }
 
         [Benchmark]
+        [MethodImpl(MethodImplOptions.NoOptimization)]
         public double Return1()
         {
             return 1;
@@ -36,8 +41,8 @@
 
             public UnitVector(double x, double y)
             {
-                X = x;
-                Y = y;
+                this.X = x;
+                this.Y = y;
             }
         }
 
