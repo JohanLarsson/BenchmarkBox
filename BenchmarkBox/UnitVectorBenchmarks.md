@@ -8,9 +8,9 @@ Frequency=3410117 Hz, Resolution=293.2451 ns, Timer=TSC
 
 
 ```
- |                                 Method |       Mean |     Error |    StdDev | Scaled | ScaledSD | Allocated |
- |--------------------------------------- |-----------:|----------:|----------:|-------:|---------:|----------:|
- |                CreateUnitVectorReturnX |  0.0088 ns | 0.0128 ns | 0.0236 ns |      ? |        ? |       0 B |
- |         CreateCheckedUnitVectorReturnX |  2.7895 ns | 0.1140 ns | 0.3343 ns |      ? |        ? |       0 B |
- | CreateCheckedUnitVectorNullableReturnX | 14.7826 ns | 0.4761 ns | 0.3717 ns |      ? |        ? |       0 B |
- |                                Return1 |  0.1331 ns | 0.0262 ns | 0.0644 ns |      ? |        ? |       0 B |
+ |                                 Method |       Mean |     Error |    StdDev |     Median | Scaled | ScaledSD | Allocated |
+ |--------------------------------------- |-----------:|----------:|----------:|-----------:|-------:|---------:|----------:|
+ |                CreateUnitVectorReturnX |  1.6905 ns | 0.0834 ns | 0.0960 ns |  1.6328 ns |   1.00 |     0.00 |       0 B |
+ |         CreateCheckedUnitVectorReturnX |  9.1679 ns | 0.2173 ns | 0.2134 ns |  9.1276 ns |   5.44 |     0.31 |       0 B |
+ | CreateCheckedUnitVectorNullableReturnX | 14.2711 ns | 0.3215 ns | 0.7387 ns | 14.2982 ns |   8.47 |     0.62 |       0 B |
+ |                                Return1 |  0.0372 ns | 0.0227 ns | 0.0494 ns |  0.0000 ns |   0.02 |     0.03 |       0 B |
