@@ -2,6 +2,7 @@
 {
     using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Collections.Immutable;
     using System.Runtime.CompilerServices;
     using BenchmarkDotNet.Attributes;
 
@@ -9,30 +10,35 @@
     {
         private static readonly Dictionary<int, int> Dictionary = new Dictionary<int, int>();
         private static readonly ConcurrentDictionary<int, int> Concurrent = new ConcurrentDictionary<int, int>();
+        private static readonly ImmutableDictionary<int, int> ImmutableDictionary;
         private static readonly ConditionalWeakTable<string, string> ConditionalWeakTable = new ConditionalWeakTable<string, string>();
         private readonly object gate = new object();
 
         static DictionaryBenchmarks()
         {
-            for (int i = 0; i < 1000000; i++)
+            var builder = System.Collections.Immutable.ImmutableDictionary.CreateBuilder<int, int>();
+            for (var i = 0; i < 1000000; i++)
             {
                 Dictionary[i] = i;
                 Concurrent[i] = i;
+                builder[i] = i;
                 ConditionalWeakTable.Add(i.ToString(), i.ToString());
             }
+
+            ImmutableDictionary = builder.ToImmutable();
         }
 
         [Benchmark(Baseline = true)]
         public int DictionaryTryGet()
         {
-            Dictionary.TryGetValue(1, out int result);
+            Dictionary.TryGetValue(1, out var result);
             return result;
         }
 
         [Benchmark]
         public int DictionaryTryGetMiss()
         {
-            Dictionary.TryGetValue(-1, out int result);
+            Dictionary.TryGetValue(-1, out var result);
             return result;
         }
 
@@ -54,10 +60,16 @@
         }
 
         [Benchmark]
-        public int ConcurrentDictionaryDictionaryTryGet()
+        public int ConcurrentDictionaryTryGet()
         {
-            int result;
-            Concurrent.TryGetValue(1, out result);
+            Concurrent.TryGetValue(1, out var result);
+            return result;
+        }
+
+        [Benchmark]
+        public int ImmutableDictionaryTryGet()
+        {
+            ImmutableDictionary.TryGetValue(1, out var result);
             return result;
         }
 
@@ -66,8 +78,7 @@
         {
             lock (this.gate)
             {
-                int result;
-                Dictionary.TryGetValue(1, out result);
+                Dictionary.TryGetValue(1, out var result);
                 return result;
             }
         }
