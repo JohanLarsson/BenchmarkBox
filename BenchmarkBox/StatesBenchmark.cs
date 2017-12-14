@@ -50,7 +50,6 @@
             return MapWithComparer[State.WY];
         }
 
-
         [Benchmark]
         public string DictionaryBoxingAL()
         {
@@ -62,7 +61,6 @@
         {
             return Map[State.WY];
         }
-
 
         [Benchmark]
         public string DictionaryStringAL()
