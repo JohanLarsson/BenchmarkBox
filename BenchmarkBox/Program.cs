@@ -20,7 +20,7 @@
                 throw new FileNotFoundException(file);
             }
 
-            foreach (var summary in RunSingle<UnitVectorBenchmarks>())
+            foreach (var summary in RunSingle<DictionaryTryGetBenchmarks>())
             {
                 CopyResult(summary.Title);
             }

@@ -7,3 +7,4 @@ nuget BenchmarkDotNet.Diagnostics.Windows
 nuget Newtonsoft.Json
 nuget Moq
 nuget NSubstitute
+nuget System.Collections.Immutable

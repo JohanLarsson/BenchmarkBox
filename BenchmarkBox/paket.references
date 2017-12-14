@@ -2,3 +2,4 @@ BenchmarkDotNet
 Newtonsoft.Json
 Moq
 NSubstitute
+System.Collections.Immutable
