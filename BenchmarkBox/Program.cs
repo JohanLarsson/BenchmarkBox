@@ -20,7 +20,7 @@
                 throw new FileNotFoundException(file);
             }
 
-            foreach (var summary in RunSingle<SetPropertyBenchmarks>())
+            foreach (var summary in RunSingle<ForVsForEachOnIntSequenceBenchmarks>())
             {
                 CopyResult(summary.Title);
             }
