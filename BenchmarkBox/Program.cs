@@ -20,7 +20,7 @@
                 throw new FileNotFoundException(file);
             }
 
-            foreach (var summary in RunSingle<ForVsForEachOnIntSequenceBenchmarks>())
+            foreach (var summary in RunSingle<DictionaryForeachKey>())
             {
                 CopyResult(summary.Title);
             }
