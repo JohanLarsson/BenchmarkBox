@@ -20,7 +20,7 @@
                 throw new FileNotFoundException(file);
             }
 
-            foreach (var summary in RunSingle<DictionaryForeachKey>())
+            foreach (var summary in RunSingle<CollectionAccessDevirtualization>())
             {
                 CopyResult(summary.Title);
             }
