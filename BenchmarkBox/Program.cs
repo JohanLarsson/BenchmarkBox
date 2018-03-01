@@ -17,6 +17,7 @@
             }
         }
 
+        // ReSharper disable once UnusedMember.Local
         private static IEnumerable<Summary> RunAll()
         {
             var switcher = new BenchmarkSwitcher(typeof(Program).Assembly);
