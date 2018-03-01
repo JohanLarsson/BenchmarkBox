@@ -3,26 +3,17 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using BenchmarkDotNet.Reports;
     using BenchmarkDotNet.Running;
 
     public class Program
     {
-        private static readonly string ProjectDirectory = Directory.GetCurrentDirectory();
-
-        private static string ArtifactsDirectory { get; } = Path.Combine(ProjectDirectory, "BenchmarkDotNet.Artifacts", "results");
-
         public static void Main()
         {
-            var file = Path.Combine(ProjectDirectory, "BenchmarkBox.csproj");
-            if (!File.Exists(file))
-            {
-                throw new FileNotFoundException(file);
-            }
-
             foreach (var summary in RunSingle<CollectionAccessDevirtualization>())
             {
-                CopyResult(summary.Title);
+                CopyResult(summary);
             }
         }
 
@@ -39,16 +30,13 @@
             return summaries;
         }
 
-        private static void CopyResult(string name)
+        private static void CopyResult(Summary summary)
         {
-            Console.WriteLine($"DestinationDirectory: {ProjectDirectory}");
-            if (Directory.Exists(ProjectDirectory))
-            {
-                var sourceFileName = Path.Combine(ArtifactsDirectory, name + "-report-github.md");
-                var destinationFileName = Path.Combine(ProjectDirectory, name + ".md");
-                Console.WriteLine($"Copy: {sourceFileName} -> {destinationFileName}");
-                File.Copy(sourceFileName, destinationFileName, overwrite: true);
-            }
+            var sourceFileName = Directory.EnumerateFiles(summary.ResultsDirectoryPath, $"*{summary.Title}-report-github.md")
+                                          .Single();
+            var destinationFileName = Path.Combine(summary.ResultsDirectoryPath, "..\\..\\Benchmarks", summary.Title + ".md");
+            Console.WriteLine($"Copy: {sourceFileName} -> {destinationFileName}");
+            File.Copy(sourceFileName, destinationFileName, overwrite: true);
         }
     }
 }
