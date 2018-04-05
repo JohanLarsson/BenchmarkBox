@@ -11,7 +11,7 @@
     {
         public static void Main()
         {
-            foreach (var summary in RunSingle<CollectionAccessDevirtualization>())
+            foreach (var summary in RunSingle<SumBenchmarks>())
             {
                 CopyResult(summary);
             }
@@ -35,7 +35,7 @@
         {
             var sourceFileName = Directory.EnumerateFiles(summary.ResultsDirectoryPath, $"*{summary.Title}-report-github.md")
                                           .Single();
-            var destinationFileName = Path.Combine(summary.ResultsDirectoryPath, "..\\..\\Benchmarks", summary.Title + ".md");
+            var destinationFileName = Path.Combine(summary.ResultsDirectoryPath,  "..\\..\\..\\..\\..\\", summary.Title + ".md");
             Console.WriteLine($"Copy: {sourceFileName} -> {destinationFileName}");
             File.Copy(sourceFileName, destinationFileName, overwrite: true);
         }
