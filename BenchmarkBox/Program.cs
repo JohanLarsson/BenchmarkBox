@@ -11,7 +11,7 @@
     {
         public static void Main()
         {
-            foreach (var summary in RunSingle<MethodGroupBenchmarks>())
+            foreach (var summary in RunSingle<PalindromeBenchmarks>())
             {
                 CopyResult(summary);
             }
@@ -21,7 +21,7 @@
         private static IEnumerable<Summary> RunAll()
         {
             var switcher = new BenchmarkSwitcher(typeof(Program).Assembly);
-            var summaries = switcher.Run(new[] { "*" });
+            var summaries = switcher.RunAll();
             return summaries;
         }
 
