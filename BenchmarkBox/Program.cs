@@ -11,7 +11,7 @@
     {
         public static void Main()
         {
-            foreach (var summary in RunSingle<PalindromeBenchmarks>())
+            foreach (var summary in RunSingle<FindVsFirstOrDefault>())
             {
                 CopyResult(summary);
             }
