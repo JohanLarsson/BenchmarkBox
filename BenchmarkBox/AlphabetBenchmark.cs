@@ -13,22 +13,22 @@
         public bool Linq()
         {
             var length = Text.Length;
-            return Text.Where(Char.IsLetter)
-                .Select(c => (int)Char.ToLower(c))
+            return Text.Where(char.IsLetter)
+                .Select(c => (int)char.ToLower(c))
                 .Distinct().Sum() == 2847;
         }
 
         [Benchmark]
         public bool NewSetCount()
         {
-            var set = new HashSet<int>(Text.Where(Char.IsLetter).Select(c => (int)Char.ToLower(c)));
+            var set = new HashSet<int>(Text.Where(char.IsLetter).Select(c => (int)char.ToLower(c)));
             return set.Count == 26;
         }
 
         [Benchmark]
         public bool SortedSet()
         {
-            var set = new SortedSet<char>(Text.Select(Char.ToLower));
+            var set = new SortedSet<char>(Text.Select(char.ToLower));
             return set.Min == 'a' && set.Max == 'z' && set.Count == 26;
         }
 
@@ -38,11 +38,11 @@
             var ints = new int[26];
             foreach (var c in Text)
             {
-                if (!Char.IsLetter(c))
+                if (!char.IsLetter(c))
                 {
                     continue;
                 }
-                var i = Char.ToLower(c) % 'a';
+                var i = char.ToLower(c) % 'a';
                 ints[i] = i;
             }
 
