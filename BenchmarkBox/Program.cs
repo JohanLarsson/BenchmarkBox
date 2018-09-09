@@ -11,7 +11,7 @@
     {
         public static void Main()
         {
-            foreach (var summary in RunSingle<FindVsFirstOrDefault>())
+            foreach (var summary in RunSingle<MethodBenchmarks>())
             {
                 CopyResult(summary);
             }
@@ -35,7 +35,9 @@
         {
             var sourceFileName = Directory.EnumerateFiles(summary.ResultsDirectoryPath, $"*{summary.Title}-report-github.md")
                                           .Single();
-            var destinationFileName = Path.Combine(summary.ResultsDirectoryPath,  "..\\..\\..\\..\\..\\", summary.Title + ".md");
+            var destinationFileName = Path.Combine(
+                summary.ResultsDirectoryPath.Split(new[] { "\\bin\\" }, StringSplitOptions.RemoveEmptyEntries).First(),
+                summary.Title.Split('.').Last() + ".md");
             Console.WriteLine($"Copy: {sourceFileName} -> {destinationFileName}");
             File.Copy(sourceFileName, destinationFileName, overwrite: true);
         }
