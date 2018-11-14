@@ -10,5 +10,5 @@ Frequency=2835939 Hz, Resolution=352.6169 ns, Timer=TSC
 ```
 | Method |     Mean |    Error |   StdDev | Scaled | ScaledSD | Allocated |
 |------- |---------:|---------:|---------:|-------:|---------:|----------:|
-|  Array | 96.91 ms | 2.046 ms | 5.355 ms |   1.00 |     0.00 |       0 B |
-|   List | 97.08 ms | 1.914 ms | 2.745 ms |   1.00 |     0.06 |       0 B |
+|  Array | 90.71 ms | 1.460 ms | 1.365 ms |   1.00 |     0.00 |       0 B |
+|   List | 87.90 ms | 2.037 ms | 1.806 ms |   0.97 |     0.02 |       0 B |

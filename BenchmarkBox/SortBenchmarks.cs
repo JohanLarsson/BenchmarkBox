@@ -6,7 +6,7 @@
 
     public class SortBenchmarks
     {
-        private static readonly int[] array = Enumerable.Range(0, 1_000_000).ToArray();
+        private static readonly int[] array = Enumerable.Range(0, 1_000_000).Reverse().ToArray();
         private static readonly List<int> list = array.ToList();
 
         [Benchmark(Baseline = true)]
