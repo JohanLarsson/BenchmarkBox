@@ -11,7 +11,7 @@
     {
         public static void Main()
         {
-            foreach (var summary in RunSingle<GetMethodBenchmarks>())
+            foreach (var summary in RunSingle<SortBenchmarks>())
             {
                 CopyResult(summary);
             }
