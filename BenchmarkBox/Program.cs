@@ -11,7 +11,7 @@
     {
         public static void Main()
         {
-            foreach (var summary in RunSingle<DateTimeBenchmarks>())
+            foreach (var summary in RunSingle<StringInterpolationBenchmarks>())
             {
                 CopyResult(summary);
             }
