@@ -11,7 +11,7 @@
     {
         public static void Main()
         {
-            foreach (var summary in RunSingle<StringInterpolationBenchmarks>())
+            foreach (var summary in RunSingle<InterfaceBenchmarks>())
             {
                 CopyResult(summary);
             }
