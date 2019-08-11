@@ -2,6 +2,7 @@ storage: none
 source https://www.nuget.org/api/v2/
 
 nuget BenchmarkDotNet.Diagnostics.Windows
+nuget CommandLineParser 2.4.3
 nuget Newtonsoft.Json
 nuget Moq
 nuget NSubstitute
