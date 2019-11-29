@@ -7,11 +7,12 @@
     using BenchmarkDotNet.Reports;
     using BenchmarkDotNet.Running;
 
+    [BenchmarkDotNet.Attributes.MemoryDiagnoser]
     public static class Program
     {
         public static void Main()
         {
-            foreach (var summary in RunSingle<InterfaceBenchmarks>())
+            foreach (var summary in RunSingle<AddBenchmarks>())
             {
                 CopyResult(summary);
             }
